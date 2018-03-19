@@ -1,0 +1,45 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-gap: 10px;
+    max-width: 50%;
+}
+
+.startGame {
+    max-width: 50%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.demand {
+    max-width: 50%;
+}
+
+.globalDemand {
+    max-width: 50%;
+    padding-top: 20px;
+}
+
+.globaDemandRed {
+    max-width: 50%;
+    padding-top: 20px;
+    color: #D22525;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resource {
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+.resourceImage {
+    width: 60px;
+    padding-left: 10px;
+}
