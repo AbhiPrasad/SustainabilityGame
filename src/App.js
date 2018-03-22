@@ -8,16 +8,14 @@ import './App.css'
 import { Button } from 'react-bootstrap'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-// const resources = [oil, ]
-
-// <Header as="h1"> GLOBAL DEMAND </Header>
+const screen = Object.freeze({ "startScreen": 1, "gameScreen": 2, "endScreen": 3 })
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isStartScreen: true,
+      currentScreen: screen.startScreen,
       livestock: 0,
       liveStockData: [],
       wood: 0,
@@ -30,30 +28,176 @@ class App extends Component {
       oilData: [],
       globalDemand: 0,
       isLastTurn: false,
-      isContinueScreen: false,
     }
   }
 
   render() {
     const {
-      isStartScreen,
+      currentScreen,
       livestock,
       wood,
       fish,
       agriculture,
       oil,
       globalDemand,
-      isLastTurn,
-      isContinueScreen,
       oilData,
       fishData,
       liveStockData,
       agricultureData,
       woodData,
+      isLastTurn,
     } = this.state;
 
-    if (isContinueScreen) {
+    // Beginning of Game
+    if (currentScreen === screen.startScreen) {
+      return (
+        <div>
+          <div className="center">
+            <div className="startGame">
+              <Button bsStyle="success" bsSize="large" onClick={this.startGame}>
+                Start Game
+              </Button>
+            </div>
+          </div>
 
+          <div className="woo">
+            <div className="cards">
+              <div className="person">
+                <div> Warren </div>
+                <div>+2 Agriculture</div>
+                <div>+3 Fish</div>
+                <div>+3 Livestock</div>
+              </div>
+              <div className="person">
+                <div> Jean </div>
+                <div> +2 Oil </div>
+                <div>+3 Agriculture</div>
+                <div>+3 Fish</div>
+              </div>
+              <div className="person">
+                <div>Mark</div>
+                <div>+1 Oil</div>
+                <div>+3 Fish</div>
+                <div>+3 Wood</div>
+              </div>
+              <div className="person">
+                <div>Jeff</div>
+                <div>+2 Oil</div>
+                <div>+3 Livestock</div>
+                <div>+3 Wood</div>
+              </div>
+              <div className="person">
+                <div>Meg</div>
+                <div>+2 Agriculture</div>
+                <div>+3 Livestock</div>
+                <div>+3 Wood</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (currentScreen === screen.gameScreen) {
+      const demandButton = isLastTurn
+        ? (
+          <Button bsStyle="danger" bsSize="large" onClick={this.endGame}>
+            End Game
+        </Button>
+        ) : (
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleGenerateDemand}>
+            Roll Demand
+        </Button>
+        );
+
+      const demand = isLastTurn
+        ? <h1 className="globaDemandRed">{`Total Demand of Resources: ${globalDemand}`}</h1>
+        : <h1 className="globalDemand">{`Total Demand of Resources: ${globalDemand}`}</h1>;
+
+      return (
+        <div>
+          <div className="center">
+            {demand}
+          </div>
+          <div className="center">
+            <div className="wrapper">
+              <div className="resource">
+                {'Oil'}
+                <img src={oilIcon} className="resourceImage" alt="oil" />
+                <h2>{oil}</h2>
+              </div>
+              <div className="resource">
+                {'Fish'}
+                <img src={fishIcon} className="resourceImage" alt="fish" />
+                <h2>{fish}</h2>
+              </div>
+              <div className="resource">
+                {'Livestock'}
+                <img src={livestockIcon} className="resourceImage" alt="livestock" />
+                <h2>{livestock}</h2>
+              </div>
+              <div className="resource">
+                {'Agriculture'}
+                <img src={agricultureIcon} className="resourceImage" alt="agriculture" />
+                <h2>{agriculture}</h2>
+              </div>
+              <div className="resource">
+                {'Wood'}
+                <img src={woodIcon} className="resourceImage" alt="wood" />
+                <h2>{wood}</h2>
+              </div>
+            </div>
+          </div>
+
+          <div className="center">
+            <div className="demand">
+              {demandButton}
+            </div>
+          </div>
+
+          <div className="center">
+            <h3>Personal Demand</h3>
+          </div>
+
+          <div className="woo">
+            <div className="cards">
+              <div className="person">
+                <div> Warren </div>
+                <div>Fish: {fish + 3}</div>
+                <div>Livestock: {livestock + 3}</div>
+                <div>Agriculture: {agriculture + 2}</div>
+              </div>
+              <div className="person">
+                <div> Jean </div>
+                <div>Oil: {oil + 2}</div>
+                <div>Fish: {fish + 3}</div>
+                <div>Agriculture: {agriculture + 2}</div>
+              </div>
+              <div className="person">
+                <div>Mark</div>
+                <div>Oil: {oil + 1}</div>
+                <div>Fish: {fish + 3}</div>
+                <div>Wood: {wood + 3}</div>
+              </div>
+              <div className="person">
+                <div>Jeff</div>
+                <div>Oil: {oil + 1}</div>
+                <div>Livestock: {livestock + 3}</div>
+                <div>Wood: {wood + 3}</div>
+              </div>
+              <div className="person">
+                <div>Meg</div>
+                <div>Livestock: {livestock + 3}</div>
+                <div>Agriculture: {agriculture + 2}</div>
+                <div>Wood: {wood + 3}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (currentScreen === screen.endScreen) {
       const data = []
       for (let i = 0; i < oilData.length; i++) {
         data.push({
@@ -90,93 +234,17 @@ class App extends Component {
             </LineChart>
           </div>
         </div>
-      )
-    }
-
-    if (isStartScreen) {
-      return (
-        <div className="center">
-          <div className="startGame">
-            <Button bsStyle="success" bsSize="large" onClick={this.startGame}>
-              Start Game
-            </Button>
-          </div>
-        </div>
-      )
-    }
-
-    const demandButton = isLastTurn
-      ? (
-        <Button bsStyle="danger" bsSize="large" onClick={this.endGame}>
-          End Game
-        </Button>
-      ) : (
-        <Button bsStyle="primary" bsSize="large" onClick={this.handleGenerateDemand}>
-          Roll Demand
-        </Button>
       );
-
-    const demand = isLastTurn
-      ? <h1 className="globaDemandRed">{`Total Global Demand: ${globalDemand}`}</h1>
-      : <h1 className="globalDemand">{`Total Global Demand: ${globalDemand}`}</h1>;
-
-    return (
-      <div>
-        <div className="center">
-          {demand}
-        </div>
-        <div className="center">
-          <div className="wrapper">
-            <div className="resource">
-              {'Oil'}
-              <img src={oilIcon} className="resourceImage" alt="oil" />
-              <h2>{oil}</h2>
-            </div>
-            <div className="resource">
-              {'Fish'}
-              <img src={fishIcon} className="resourceImage" alt="fish" />
-              <h2>{fish}</h2>
-            </div>
-            <div className="resource">
-              {'Livestock'}
-              <img src={livestockIcon} className="resourceImage" alt="livestock" />
-              <h2>{livestock}</h2>
-            </div>
-            <div className="resource">
-              {'Agriculture'}
-              <img src={agricultureIcon} className="resourceImage" alt="agriculture" />
-              <h2>{agriculture}</h2>
-            </div>
-            <div className="resource">
-              {'Wood'}
-              <img src={woodIcon} className="resourceImage" alt="wood" />
-              <h2>{wood}</h2>
-            </div>
-          </div>
-        </div>
-
-        <div className="center">
-          <div className="demand">
-            {demandButton}
-          </div>
-        </div>
-      </div>
-    );
+    }
   }
 
-  startGame = () => {
-    this.setState({
-      isStartScreen: false,
-    });
-  }
+  startGame = () => this.setState({ currentScreen: screen.gameScreen });
 
-  endGame = () => {
-    this.setState({ isContinueScreen: true });
-  }
+  endGame = () => this.setState({ currentScreen: screen.endScreen });
 
   continueGame = () => {
     this.setState({
-      isStartScreen: true,
+      currentScreen: screen.startScreen,
       livestock: 0,
       liveStockData: [],
       wood: 0,
@@ -189,7 +257,6 @@ class App extends Component {
       oilData: [],
       globalDemand: 0,
       isLastTurn: false,
-      isContinueScreen: false,
     })
   }
 
