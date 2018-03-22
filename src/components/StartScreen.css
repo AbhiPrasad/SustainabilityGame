@@ -1,0 +1,59 @@
+.darkred {
+  background-color: #ffbfbf;
+  border: 5px solid red;
+  cursor: pointer;
+}
+
+.lightred {
+  background-color: #ffbfbf;
+  border: 5px solid white;
+  cursor: pointer;
+}
+
+.darkblue {
+  background-color: #bfe5ff;
+  border: 5px solid blue;
+  cursor: pointer;
+}
+
+.lightblue {
+  background-color: #bfe5ff;
+  border: 5px solid white;
+  cursor: pointer;
+}
+
+.darkgreen {
+  background-color: #b4f2aa;
+  border: 5px solid green;
+  cursor: pointer;
+}
+
+.lightgreen {
+  background-color: #b4f2aa;
+  border: 5px solid white;
+  cursor: pointer;
+}
+
+.darkorange {
+  background-color: #f0ca8d;
+  border: 5px solid orange;
+  cursor: pointer;
+}
+
+.lightorange {
+  background-color: #f0ca8d;
+  border: 5px solid white;
+  cursor: pointer;
+}
+
+.darkyellow {
+  background-color: #f2f1aa;
+  border: 5px solid #edea00;
+  cursor: pointer;
+}
+
+.lightyellow {
+  background-color: #f2f1aa;
+  border: 5px solid white;
+  cursor: pointer;
+}

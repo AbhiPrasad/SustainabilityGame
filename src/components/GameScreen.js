@@ -16,7 +16,7 @@ const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, end
         </Button>
     ) : (
       <Button bsStyle="primary" bsSize="large" onClick={generateDemand}>
-        Roll Demand
+        Update Demand
         </Button>
     );
 
@@ -29,27 +29,27 @@ const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, end
       <div className="center">
         <div className="wrapper">
           <div className="resource">
-            {'Oil'}
+            Oil
             <img src={oilIcon} className="resourceImage" alt="oil" />
             <h2>{oil}</h2>
           </div>
           <div className="resource">
-            {'Fish'}
+            Fish
             <img src={fishIcon} className="resourceImage" alt="fish" />
             <h2>{fish}</h2>
           </div>
           <div className="resource">
-            {'Livestock'}
+            Livestock
             <img src={livestockIcon} className="resourceImage" alt="livestock" />
             <h2>{livestock}</h2>
           </div>
           <div className="resource">
-            {'Agriculture'}
+            Agriculture
             <img src={agricultureIcon} className="resourceImage" alt="agriculture" />
             <h2>{agriculture}</h2>
           </div>
           <div className="resource">
-            {'Wood'}
+            Wood
             <img src={woodIcon} className="resourceImage" alt="wood" />
             <h2>{wood}</h2>
           </div>
@@ -67,41 +67,39 @@ const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, end
       </div>
 
       <div className="center">
-        <h3>Personal Demand</h3>
+        <h3>Corporation Demand</h3>
       </div>
 
-      <div className="woo">
-        <div className="cards">
-          <div className="person">
-            <div> Warren </div>
-            <div>Fish: {fish + 3}</div>
-            <div>Livestock: {livestock + 3}</div>
-            <div>Agriculture: {agriculture + 2}</div>
-          </div>
-          <div className="person">
-            <div> Jean </div>
-            <div>Oil: {oil + 2}</div>
-            <div>Fish: {fish + 3}</div>
-            <div>Agriculture: {agriculture + 2}</div>
-          </div>
-          <div className="person">
-            <div>Mark</div>
-            <div>Oil: {oil + 1}</div>
-            <div>Fish: {fish + 3}</div>
-            <div>Wood: {wood + 3}</div>
-          </div>
-          <div className="person">
-            <div>Jeff</div>
-            <div>Oil: {oil + 1}</div>
-            <div>Livestock: {livestock + 3}</div>
-            <div>Wood: {wood + 3}</div>
-          </div>
-          <div className="person">
-            <div>Meg</div>
-            <div>Livestock: {livestock + 3}</div>
-            <div>Agriculture: {agriculture + 2}</div>
-            <div>Wood: {wood + 3}</div>
-          </div>
+      <div className="cards">
+        <div className="person">
+          <div>Red Inc.</div>
+          <div>Fish: {fish + 3}</div>
+          <div>Livestock: {livestock + 3}</div>
+          <div>Agriculture: {agriculture + 2}</div>
+        </div>
+        <div className="person">
+          <div>Blue Inc.</div>
+          <div>Oil: {oil + 2}</div>
+          <div>Fish: {fish + 3}</div>
+          <div>Agriculture: {agriculture + 2}</div>
+        </div>
+        <div className="person">
+          <div>Green Inc.</div>
+          <div>Oil: {oil + 1}</div>
+          <div>Fish: {fish + 3}</div>
+          <div>Wood: {wood + 3}</div>
+        </div>
+        <div className="person">
+          <div>Orange Inc.</div>
+          <div>Oil: {oil + 1}</div>
+          <div>Livestock: {livestock + 3}</div>
+          <div>Wood: {wood + 3}</div>
+        </div>
+        <div className="person">
+          <div>Yellow Inc.</div>
+          <div>Livestock: {livestock + 3}</div>
+          <div>Agriculture: {agriculture + 2}</div>
+          <div>Wood: {wood + 3}</div>
         </div>
       </div>
     </div>
