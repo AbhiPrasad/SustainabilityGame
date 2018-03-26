@@ -73,7 +73,7 @@ const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, end
     );
 
   const demand = isLastTurn
-    ? <h4 className="globaDemandRed">{`Total Demand of Resources: ${globalDemand}`}</h4>
+    ? <h4 className="globalDemandRed">{`Total Demand of Resources: ${globalDemand}`}</h4>
     : <h4 className="globalDemand">{`Total Demand of Resources: ${globalDemand}`}</h4>;
 
   return (

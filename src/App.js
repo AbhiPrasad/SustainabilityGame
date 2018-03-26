@@ -125,12 +125,12 @@ class App extends React.Component {
   }
 }
 
-function randNum(otherNum) {
+function randNum(currentAmountOfResources) {
   const max = 2;
   const min = -1;
   const number = Math.round(Math.random() * (max - min) + min);
-  if (otherNum === 0 && number === -1) {
-    return 0;
+  if (currentAmountOfResources === 0 && number === -1) {
+    return Math.round(Math.random() * max);
   } else {
     return number;
   }
