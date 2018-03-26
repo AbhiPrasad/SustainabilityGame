@@ -5,6 +5,7 @@ import fishIcon from '../static/fish.svg'
 import agricultureIcon from '../static/agriculture.svg'
 import oilIcon from '../static/oil.svg'
 import { Button } from 'react-bootstrap'
+import KeyHandler, { KEYPRESS } from 'react-key-handler';
 
 const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, endGame, generateDemand, selected }) => {
   const isLastTurn = globalDemand >= 30;
@@ -63,13 +64,19 @@ const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, end
 
   const demandButton = isLastTurn
     ? (
-      <Button bsStyle="danger" bsSize="large" onClick={endGame}>
-        End Game
-        </Button>
+      <div>
+        <KeyHandler keyEventName={KEYPRESS} keyValue=" " onKeyHandle={endGame} />
+        <Button bsStyle="danger" bsSize="large" onClick={endGame}>
+          End Game
+      </Button>
+      </div>
     ) : (
-      <Button bsStyle="primary" bsSize="large" onClick={generateDemand}>
-        Update Demand
+      <div>
+        <KeyHandler keyEventName={KEYPRESS} keyValue=" " onKeyHandle={generateDemand} />
+        <Button bsStyle="primary" bsSize="large" onClick={generateDemand}>
+          Update Demand
         </Button>
+      </div>
     );
 
   const demand = isLastTurn

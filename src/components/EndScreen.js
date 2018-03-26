@@ -13,7 +13,7 @@ const EndScreen = ({ continueGame, data }) => {
         </div>
       </div>
       <div className="center">
-        <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <LineChart width={800} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <XAxis dataKey="name" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
@@ -24,6 +24,17 @@ const EndScreen = ({ continueGame, data }) => {
           <Line type="monotone" dataKey="Livestock" stroke="#D22525" />
           <Line type="monotone" dataKey="Agriculture" stroke="#F7E700" />
           <Line type="monotone" dataKey="Wood" stroke="#2C8911" />
+        </LineChart>
+      </div>
+
+      <div className="center">
+        <LineChart width={800} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <XAxis dataKey="name" />
+          <YAxis />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="Total" stroke="#808080" />
         </LineChart>
       </div>
     </div>

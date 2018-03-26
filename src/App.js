@@ -69,9 +69,13 @@ class App extends React.Component {
 
   handleStartGame = (selected) => this.setState({ currentScreen: screen.gameScreen, selected });
 
-  handleEndGame = () => this.setState({ currentScreen: screen.endScreen });
+  handleEndGame = (event) => {
+    event.preventDefault();
+    this.setState({ currentScreen: screen.endScreen });
+  }
 
-  handleContinueGame = () => {
+  handleContinueGame = (event) => {
+    event.preventDefault();
     this.setState({
       currentScreen: screen.startScreen,
       livestock: 0,
@@ -111,6 +115,7 @@ class App extends React.Component {
       Livestock: newLivestock,
       Agriculture: newAgriculture,
       Wood: newWood,
+      Total: globalDemand,
     };
 
     this.setState({
