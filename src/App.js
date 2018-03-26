@@ -19,6 +19,13 @@ class App extends React.Component {
       oil: 0,
       data: [],
       globalDemand: 0,
+      selected: {
+        redSelected: false,
+        blueSelected: false,
+        greenSelected: false,
+        orangeSelected: false,
+        yellowSelected: false,
+      },
     }
   }
 
@@ -32,6 +39,7 @@ class App extends React.Component {
       oil,
       data,
       globalDemand,
+      selected
     } = this.state;
 
     if (currentScreen === screen.startScreen) {
@@ -49,6 +57,7 @@ class App extends React.Component {
           wood={wood}
           endGame={this.handleEndGame}
           generateDemand={this.handleGenerateDemand}
+          selected={selected}
         />
       );
     }
@@ -58,7 +67,7 @@ class App extends React.Component {
     }
   }
 
-  handleStartGame = () => this.setState({ currentScreen: screen.gameScreen });
+  handleStartGame = (selected) => this.setState({ currentScreen: screen.gameScreen, selected });
 
   handleEndGame = () => this.setState({ currentScreen: screen.endScreen });
 

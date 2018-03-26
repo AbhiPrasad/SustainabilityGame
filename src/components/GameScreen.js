@@ -6,8 +6,60 @@ import agricultureIcon from '../static/agriculture.svg'
 import oilIcon from '../static/oil.svg'
 import { Button } from 'react-bootstrap'
 
-const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, endGame, generateDemand }) => {
+const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, endGame, generateDemand, selected }) => {
   const isLastTurn = globalDemand >= 30;
+
+  const { redSelected, blueSelected, greenSelected, orangeSelected, yellowSelected } = selected;
+
+  const red = redSelected
+    ? (
+      <div className="person lightred">
+        <div>Red Inc.</div>
+        <div>Fish: {fish + 3}</div>
+        <div>Livestock: {livestock + 3}</div>
+        <div>Agriculture: {agriculture + 2}</div>
+      </div>
+    ) : null;
+
+  const blue = blueSelected
+    ? (
+      <div className="person lightblue">
+        <div>Blue Inc.</div>
+        <div>Oil: {oil + 2}</div>
+        <div>Fish: {fish + 3}</div>
+        <div>Agriculture: {agriculture + 2}</div>
+      </div>
+    ) : null;
+
+  const green = greenSelected
+    ? (
+      <div className="person lightgreen">
+        <div>Green Inc.</div>
+        <div>Oil: {oil + 1}</div>
+        <div>Fish: {fish + 3}</div>
+        <div>Wood: {wood + 3}</div>
+      </div>
+    ) : null;
+
+  const orange = orangeSelected
+    ? (
+      <div className="person lightorange">
+        <div>Orange Inc.</div>
+        <div>Oil: {oil + 1}</div>
+        <div>Livestock: {livestock + 3}</div>
+        <div>Wood: {wood + 3}</div>
+      </div>
+    ) : null;
+
+  const yellow = yellowSelected
+    ? (
+      <div className="person lightyellow">
+        <div>Yellow Inc.</div>
+        <div>Livestock: {livestock + 3}</div>
+        <div>Agriculture: {agriculture + 2}</div>
+        <div>Wood: {wood + 3}</div>
+      </div>
+    ) : null;
 
   const demandButton = isLastTurn
     ? (
@@ -70,37 +122,12 @@ const GameScreen = ({ globalDemand, oil, fish, livestock, agriculture, wood, end
         <h3>Corporation Demand</h3>
       </div>
 
-      <div className="cards">
-        <div className="person">
-          <div>Red Inc.</div>
-          <div>Fish: {fish + 3}</div>
-          <div>Livestock: {livestock + 3}</div>
-          <div>Agriculture: {agriculture + 2}</div>
-        </div>
-        <div className="person">
-          <div>Blue Inc.</div>
-          <div>Oil: {oil + 2}</div>
-          <div>Fish: {fish + 3}</div>
-          <div>Agriculture: {agriculture + 2}</div>
-        </div>
-        <div className="person">
-          <div>Green Inc.</div>
-          <div>Oil: {oil + 1}</div>
-          <div>Fish: {fish + 3}</div>
-          <div>Wood: {wood + 3}</div>
-        </div>
-        <div className="person">
-          <div>Orange Inc.</div>
-          <div>Oil: {oil + 1}</div>
-          <div>Livestock: {livestock + 3}</div>
-          <div>Wood: {wood + 3}</div>
-        </div>
-        <div className="person">
-          <div>Yellow Inc.</div>
-          <div>Livestock: {livestock + 3}</div>
-          <div>Agriculture: {agriculture + 2}</div>
-          <div>Wood: {wood + 3}</div>
-        </div>
+      <div className="game-cards">
+        {blue}
+        {green}
+        {orange}
+        {red}
+        {yellow}
       </div>
     </div>
   );

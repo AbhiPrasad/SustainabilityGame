@@ -5,6 +5,10 @@
     max-width: 50%;
 }
 
+. {
+    font-family: 'Montserrat', sans-serif;
+}
+
 .startGame {
     max-width: 50%;
     padding-top: 20px;
@@ -48,6 +52,14 @@
     justify-content: center;
 }
 
+.game-cards {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    grid-gap: 15px;
+    justify-items: center;
+    align-items: stretch;
+    justify-content: center;
+}
 
 .woo {
     padding-left: 200px;
