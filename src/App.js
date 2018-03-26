@@ -133,9 +133,14 @@ class App extends React.Component {
 function randNum(currentAmountOfResources) {
   const max = 2;
   const min = -1;
-  const number = Math.round(Math.random() * (max - min) + min);
-  if (currentAmountOfResources === 0 && number === -1) {
-    return Math.round(Math.random() * max);
+  const number = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  if (currentAmountOfResources < 2 && number === -1) {
+    return Math.floor(Math.random() * (max + 1));
+  } else if (currentAmountOfResources < 2 && number < 1) {
+    return Math.floor(Math.random() * max) + 1;
+  } else if (currentAmountOfResources > 6 && number === 2) {
+    return Math.floor(Math.random() * min) + min;
   } else {
     return number;
   }
