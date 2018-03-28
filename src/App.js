@@ -135,7 +135,7 @@ function randNum(currentAmountOfResources) {
   const min = -1;
   const number = Math.floor(Math.random() * (max - min + 1)) + min;
 
-  if (currentAmountOfResources < 2 && number === -1) {
+  if (currentAmountOfResources < 1 && number === -1) {
     return Math.floor(Math.random() * (max + 1));
   } else if (currentAmountOfResources < 2 && number < 1) {
     return Math.floor(Math.random() * max) + 1;
