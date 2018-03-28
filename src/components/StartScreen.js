@@ -109,6 +109,10 @@ class StartScreen extends React.Component {
           </div>
         </div>
 
+        <div className="center">
+          <h2>Select the 4 given Company Profiles</h2>
+        </div>
+
         <div className="cards">
           {blue}
           {green}
